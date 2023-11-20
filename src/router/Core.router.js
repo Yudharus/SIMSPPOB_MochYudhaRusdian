@@ -1,14 +1,13 @@
-import React, {Fragment, useEffect} from 'react';
-import {NavigationContainer, useNavigation} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {LogBox, StatusBar, Alert} from 'react-native';
+import React, { Fragment, useEffect } from 'react';
+import { NavigationContainer, useNavigation } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { LogBox, StatusBar, Alert } from 'react-native';
 import Splash from '../screens/Splash.screens';
-import {Provider} from 'react-redux';
+import { Provider } from 'react-redux';
 import Redux from '../configs/redux/Redux.config';
 import {
   navigationRef,
   isReadyRef,
-  navigate,
 } from '../libs/helpers/RootNavigation';
 import Login from '../screens/Login.screens';
 import Register from '../screens/Register.screens';
@@ -48,42 +47,42 @@ const Core = () => {
             <Stack.Screen
               name="Splash"
               component={Splash}
-              options={{headerShown: false}}
+              options={{ headerShown: false }}
             />
             <Stack.Screen
               name="Login"
               component={Login}
-              options={{headerShown: false}}
-            /> 
+              options={{ headerShown: false }}
+            />
             <Stack.Screen
               name="Register"
               component={Register}
-              options={{headerShown: false}}
+              options={{ headerShown: false }}
             />
             <Stack.Screen
               name="Homepage"
               component={Homepage}
-              options={{headerShown: false}}
+              options={{ headerShown: false }}
             />
             <Stack.Screen
               name="Pembayaran"
               component={Pembayaran}
-              options={{headerShown: false}}
+              options={{ headerShown: false }}
             />
             <Stack.Screen
               name="TopUp"
               component={TopUp}
-              options={{headerShown: false}}
+              options={{ headerShown: false }}
             />
             <Stack.Screen
               name="Transaction"
               component={Transaction}
-              options={{headerShown: false}}
+              options={{ headerShown: false }}
             />
             <Stack.Screen
               name="Akun"
               component={Akun}
-              options={{headerShown: false}}
+              options={{ headerShown: false }}
             />
           </Stack.Navigator>
         </NavigationContainer>

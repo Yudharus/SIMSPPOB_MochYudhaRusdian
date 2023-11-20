@@ -19,6 +19,7 @@ const Transaction = ({ user, navigation }) => {
     const [loading, setLoading] = useState(false)
     const height = Dimensions.get('window').height;
 
+
     useEffect(() => {
         initData()
     }, [])
@@ -27,6 +28,7 @@ const Transaction = ({ user, navigation }) => {
         setLoading(true)
         try {
             const response = await GetHistoryTransaction(offset)
+
             setHistory(response.records)
             setLoading(false)
         } catch (error) {
@@ -45,14 +47,14 @@ const Transaction = ({ user, navigation }) => {
             <View className="px-4 py-2 border border-grey2 flex-row justify-between rounded-md mt-6">
                 <View>
                     <Text className={`text-xl font-bold ${item.transaction_type == "PAYMENT" ? "text-primary--red" : "text-primary--green"}`}>{item.transaction_type == "PAYMENT" ? "-" : "+"} Rp.{ToRupiah(item.total_amount)}</Text>
-                    <Text className="text-xs font-medium text-grey5 mt-2">{moment(item.created_on).locale("id").format('LLL')}</Text>
+                    <Text className="text-xs font-medium text-grey5 mt-2">{moment(item.created_on).format('LLL')}</Text>
                 </View>
                 <Text className="text-xs font-medium text-black mt-2">{item.description}</Text>
             </View>
         )
     }
 
-    const renderEmptyItem = ({ item }) => {
+    const renderEmptyItem = () => {
         return (
             <View className="items-center justify-center">
                 <Text className={`text-xs font-medium text-grey mt-${height * 0.05}`}>Maaf tidak ada histori transaksi saat ini</Text>
@@ -65,7 +67,7 @@ const Transaction = ({ user, navigation }) => {
             <ScrollView>
                 <View className="px-6 py-6 bg-white flex-1">
                     <TopMenu text="Transaksi" onPress={() => navigation.replace("Homepage")} />
-                    <CardSaldo amount={ToRupiah(user.getSaldo.balance)} />
+                    <CardSaldo amount={ToRupiah(user.getSaldo && user.getSaldo.balance)} />
                     <View className="mt-10">
                         <Text className="text-black font-bold text-lg">Transaksi</Text>
                         {
@@ -88,7 +90,6 @@ const Transaction = ({ user, navigation }) => {
                     </View>
                 </View>
             </ScrollView>
-
             <BottomNavigation />
         </SafeAreaView>
     )
