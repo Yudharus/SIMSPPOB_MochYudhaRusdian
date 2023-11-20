@@ -44,7 +44,7 @@ const Transaction = ({ user, navigation }) => {
 
     const renderItem = ({ item }) => {
         return (
-            <View className="px-4 py-2 border border-grey2 flex-row justify-between rounded-md mt-6">
+            <View className="px-4 py-2 border border-grey2 flex-row justify-between rounded-md mt-6 ">
                 <View>
                     <Text className={`text-xl font-bold ${item.transaction_type == "PAYMENT" ? "text-primary--red" : "text-primary--green"}`}>{item.transaction_type == "PAYMENT" ? "-" : "+"} Rp.{ToRupiah(item.total_amount)}</Text>
                     <Text className="text-xs font-medium text-grey5 mt-2">{moment(item.created_on).format('LLL')}</Text>
